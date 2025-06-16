@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { YoutubeData } from './youtube';
-import KtvList from './KtvList';
+import { YoutubeData } from './components/YoutubeData';
+import KtvList from './components/KtvList';
 
 const App = () => {
   const [videos, setVideos] = useState([]);
 
-  const playlistId = 'YOUR_PLAYLIST_ID'; // Replace with actual ID
-  const apiKey = 'YOUR_API_KEY';         // Replace with actual API key
+  const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
+  const playlistId = process.env.REACT_APP_PLAYLIST_ID;
 
   const fetchVideos = async () => {
     const youtube = YoutubeData(apiKey, playlistId);
@@ -25,7 +25,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>YouTube videos list</h1>
+      <h1>KroftTV</h1>
       <KtvList videos={videos} />
     </div>
   );
